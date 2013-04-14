@@ -48,6 +48,12 @@ class QuotationStyleChecker(PinaxStyleChecker):
                         self.add_message("C9801", line=start[0])
 
 
+def get_offset(line):
+    if line.isspace():
+        return len(line) - 1
+    return len(line) - len(line.lstrip())
+
+
 class IndentationStyleChecker(PinaxStyleChecker):
     """
     Check for blank lines to be indented to the same level as the previous
@@ -70,11 +76,6 @@ class IndentationStyleChecker(PinaxStyleChecker):
     }
     options = ()
     
-    def offset(self, line):
-        if line.isspace():
-            return len(line) - 1
-        return len(line) - len(line.lstrip())
-    
     def process_tokens(self, tokens):
         last_indent = None
         last_lines = []
@@ -82,7 +83,7 @@ class IndentationStyleChecker(PinaxStyleChecker):
         
         for (tok_type, _, start, _, line) in tokens:
             if tok_type == 54 and line.isspace():
-                offset = self.offset(line)
+                offset = get_offset(line)
                 if last_indent is None:
                     last_indent = offset
                     last_lines.append(start[0])
@@ -93,7 +94,7 @@ class IndentationStyleChecker(PinaxStyleChecker):
             else:
                 if not start[0] in handled:
                     if last_indent is not None:
-                        offset = self.offset(line)
+                        offset = get_offset(line)
                         if offset != last_indent:
                             for lineno in last_lines:
                                 self.add_message(
