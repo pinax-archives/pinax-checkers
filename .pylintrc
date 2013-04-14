@@ -53,8 +53,5 @@ max-line-length=80
 
 dummy-variables-rgx=^.*_$
 
-[TYPECHECK]
-# generated-members=DoesNotExist,MultipleObjectsReturned,objects,status_code,context,is_valid,cleaned_data,errors
-
 [MISCELLANEOUS]
 notes=FIXME,XXX,TODO,@@@
