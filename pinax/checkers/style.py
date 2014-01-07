@@ -54,59 +54,5 @@ def get_offset(line):
     return len(line) - len(line.lstrip())
 
 
-class IndentationStyleChecker(PinaxStyleChecker):
-    """
-    Check for blank lines to be indented to the same level as the previous
-    line.
-    """
-
-    __implements__ = IRawChecker
-
-    name = "indentation"
-    msgs = {
-        "C9901": (
-            "Line indent doesn't match block (Expected: %s, Got: %s)",
-            "Blank lines are indented to the appropriate level for the block "
-            "they are in."
-        ),
-        "C9902": (
-            "Blank Line is Indented Too Much.",
-            "A Blank Line has been indented too much."
-        ),
-    }
-    options = ()
-
-    def process_tokens(self, tokens):
-        last_indent = None
-        last_lines = []
-        handled = set()
-
-        for (tok_type, _, start, _, line) in tokens:
-            if tok_type == 54 and line.isspace():
-                offset = get_offset(line)
-                if last_indent is None:
-                    last_indent = offset
-                    last_lines.append(start[0])
-                elif offset != last_indent:
-                    self.add_message("C9902", line=start[0])
-                else:
-                    last_lines.append(start[0])
-            else:
-                if not start[0] in handled:
-                    if last_indent is not None:
-                        offset = get_offset(line)
-                        if offset != last_indent:
-                            for lineno in last_lines:
-                                self.add_message(
-                                    "C9901",
-                                    line=lineno,
-                                    args=(offset, last_indent)
-                                )
-                        last_indent = None
-                        last_lines = []
-                    handled.add(start[0])
-
-
 def register(linter):
     linter.register_checker(QuotationStyleChecker(linter))
-    linter.register_checker(IndentationStyleChecker(linter))
