@@ -27,9 +27,9 @@ class QuotationStyleChecker(PinaxStyleChecker):
     """
     Check for use of double-quotes instead of single-quotes
     """
-    
+
     __implements__ = IRawChecker
-    
+
     name = "quotation"
     msgs = {
         "C9801": (
@@ -39,7 +39,7 @@ class QuotationStyleChecker(PinaxStyleChecker):
         ),
     }
     options = ()
-    
+
     def process_tokens(self, tokens):
         for (tok_type, token, start, _, _) in tokens:
             if tok_type == 3:
@@ -59,9 +59,9 @@ class IndentationStyleChecker(PinaxStyleChecker):
     Check for blank lines to be indented to the same level as the previous
     line.
     """
-    
+
     __implements__ = IRawChecker
-    
+
     name = "indentation"
     msgs = {
         "C9901": (
@@ -75,12 +75,12 @@ class IndentationStyleChecker(PinaxStyleChecker):
         ),
     }
     options = ()
-    
+
     def process_tokens(self, tokens):
         last_indent = None
         last_lines = []
         handled = set()
-        
+
         for (tok_type, _, start, _, line) in tokens:
             if tok_type == 54 and line.isspace():
                 offset = get_offset(line)
