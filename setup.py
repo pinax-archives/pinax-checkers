@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name="pinax.checkers",
-    version="1.0",
+    version="1.1",
     author="Pinax",
     author_email="development@eldarion.com",
     url="https://github.com/pinax/pinax-checkers",
