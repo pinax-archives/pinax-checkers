@@ -10,11 +10,11 @@ custom pylint style checkers for Pinax coding standards
 .. image:: https://coveralls.io/repos/pinax/pinax-checkers/badge.png
     :target: https://coveralls.io/r/pinax/pinax-checkers
 
-.. image:: https://pypip.in/d/pinax-checkers/badge.png
-    :target:  https://pypi.python.org/pypi/pinax-checkers/
+.. image:: https://pypip.in/d/pinax.checkers/badge.png
+    :target:  https://pypi.python.org/pypi/pinax.checkers/
 
-.. image:: https://pypip.in/v/pinax-checkers/badge.png
-    :target:  https://pypi.python.org/pypi/pinax-checkers/
+.. image:: https://pypip.in/v/pinax.checkers/badge.png
+    :target:  https://pypi.python.org/pypi/pinax.checkers/
 
-.. image:: https://pypip.in/license/pinax-checkers/badge.png
-    :target:  https://pypi.python.org/pypi/pinax-checkers/
+.. image:: https://pypip.in/license/pinax.checkers/badge.png
+    :target:  https://pypi.python.org/pypi/pinax.checkers/
