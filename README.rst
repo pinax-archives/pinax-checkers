@@ -4,6 +4,9 @@ pinax-checkers
 
 custom pylint style checkers for Pinax coding standards
 
+.. image:: http://slack.pinaxproject.com/badge.svg
+   :target: http://slack.pinaxproject.com/
+
 .. image:: https://travis-ci.org/pinax/pinax-checkers.png
     :target: https://travis-ci.org/pinax/pinax-checkers
 
